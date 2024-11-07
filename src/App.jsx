@@ -3,13 +3,15 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
+import AppLayout from "./pages/AppLayout";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          index
           element={<Homepage />}
         />
         <Route
@@ -23,6 +25,27 @@ function App() {
         <Route
           path="/pricing"
           element={<Pricing />}
+        />
+        <Route
+          path="/app"
+          element={<AppLayout />}>
+          <Route
+            index
+            path="cities"
+            element={<p>Cities</p>}
+          />
+          <Route
+            path="countries"
+            element={<p>Countries</p>}
+          />
+          <Route
+            path="form"
+            element={<p>Form</p>}
+          />
+        </Route>
+        <Route
+          path="*"
+          element={<PageNotFound />}
         />
       </Routes>
     </BrowserRouter>
